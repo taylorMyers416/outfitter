@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Outfitter - Create Outfits</title>
+    <!-- Rest.css-->
+    <link rel="stylesheet" href="../css/reset.css">
     <!-- Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize Compiled and minified CSS -->
@@ -25,11 +27,11 @@
             <img class="brand-logo" height="60px" width="auto" src="../img/navLogo.png" />
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons blue-grey-text text-darken-4">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a class = "blue-grey-text text-darken-4" href="/home">Home</a></li>
-                <li><a class = "blue-grey-text text-darken-4" href="/add-clothing">Add Clothing</a></li>
-                <li><a class = "blue-grey-text text-darken-4" href="/view-outfits">View Outfits</a></li>
-                <li><a class = "blue-grey-text text-darken-4" href="/create-outfit">Create Outfit</a></li>
-                <li><a class = "blue-grey-text text-darken-4" href="/generate-outfits">Generate Outfits</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/home">Home</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/add-clothing">Add Clothing</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/view-outfits">View Outfits</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/create-outfit">Create Outfit</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/generate-outfits">Generate Outfits</a></li>
                 <li> <a class="waves-effect blue-grey darken-4 cyan-text btn signout" onclick="signout()">Signout</a></li>
             </ul>
         </div>
@@ -43,10 +45,105 @@
         <li><a href="/generate-outfits">Generate Outfits</a></li>
         <li> <a class="waves-effect cyan black-text btn signout" onclick="signout()">Signout</a></li>
     </ul>
+    <div>
+        <div class="row">
+            <div class="col s5 offset-s1">
+                <img src="../img/default/jacket.png" height="100px" width="100px" class="toptwo">
+                
+                <img src="../img/default/shoes.png" height="100px" width="100px" class="shoes">
+
+            </div>
+            <div class="col s5">
+                    <img src="../img/default/top.png" height="100px" width="100px" class="top">
+                <img src="../img/default/bottom.png" height="100px" width="100px" class="bottom">
+            </div>
+
+        </div>
+        <div class="row">
+            <ul class="collapsible z-depth-0">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Filter</div>
+                    <div class="collapsible-body">
+
+                        <select class="input-field col s12" multiple>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                        <label>Materialize Multiple Select</label>
+
+                        <select multiple>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                        <label>Materialize Multiple Select</label>
+                    </div>
+                </li>
+            </ul>
+                    <ul class="tabs tabs-fixed-width tab-demo z-depth-0">
+                            <li class="tab"><a href="#test1"><img src="../img/default/jacket.png" height="40px" width="40px"></a></li>
+                            <li class="tab"><a class="active" href="#test2"><img src="../img/default/top.png" height="40px" width="40px"></a></li>
+                            <li class="tab"><a href="#test3"><img src="../img/default/bottom.png" height="40px" width="40px"></a></li>
+                            <li class="tab"><a href="#test4"><img src="../img/default/shoes.png" height="40px" width="40px"></a></li>
+                          </ul>
+                          <div id="test1" class="col s12">
+                            <div class = " tabDiv row blue-grey ">
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+                                    <div class = "col s3">
+                                            <img class = "white" src="../img/default/jacket.png" height="auto" width="100%">
+                                    </div>
+
+                            </div>
+                          </div>
+                          <div id="test2" class="col s12"><p>Test 2</p></div>
+                          <div id="test3" class="col s12"><p>Test 3</p></div>
+                          <div id="test4" class="col s12"><p>Test 4</p></div>
+        </div>
+
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
+            var select = document.querySelectorAll('select');
+            var selectInstances = M.FormSelect.init(select);
+            var collapsible = document.querySelectorAll('.collapsible');
+            var collapsibleInstances = M.Collapsible.init(collapsible);
+            var tabs = document.querySelectorAll('.tabs')
+            var instance = M.Tabs.init(tabs);
         });
     </script>
 </body>
