@@ -12,12 +12,10 @@ var addClothing = function () {
    
     var data = {
         type: document.getElementById("clothingType").value,
-        name: document.getElementById("name").value,
         color: selectInstances[2].getSelectedValues(),
         occasion: selectInstances[1].getSelectedValues(),
     }
-    console.log(data)
-    firebasePost("add_clothing", userid, selectedFile, data);
+    firebasePost("clothing_item", userid, selectedFile, data);
 }
 var onFileSelection = function (event) {
     if (event.target.files && event.target.files[0]) {

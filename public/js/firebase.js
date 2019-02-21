@@ -39,15 +39,12 @@ var firebasePost = function (table, userid, file, data) {
     }, function () {
         // Handle successful uploads on complete
         uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-            var clothing_item = {
-                type: data.type,
-                name: data.name,
-                occassion: data.occasion,
-                color: data.color,
-                img_url: downloadURL,
-            };
-            db.collection(`${userid.uid}`).doc("clothing_item").set({
-                    [clothing_item.name]: clothing_item
+            db.collection(`${table}`).add({
+                    user: userid.uid,
+                    type: data.type,
+                    occassion: data.occasion,
+                    color: data.color,
+                    img_url: downloadURL,
                 })
                 .then(function () {
                     console.log("Document successfully written!");

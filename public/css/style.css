@@ -1,3 +1,12 @@
+html,
+body {
+    height: 100vh;
+}
+
+.material-icons {
+    vertical-align: middle;
+}
+
 .sidenav li>a.signout {
     width: 40%;
 }
@@ -95,4 +104,32 @@
     /*Custom Color Of Indicator*/
 }
 
-/
+#saveBtn {
+    position: absolute;
+    left: 20px;
+    z-index: 1;
+    bottom: 10px;
+}
+
+#canvasHolder {
+    text-align: center;
+    position: relative;
+}
+
+#createOutfitWrapper {
+    height: calc(100vh - 64px);
+}
+
+@media only screen and (max-width: 600px) {
+    #createOutfitWrapper {
+        height: calc(100vh - 56px)
+    }
+}
+
+.activeImg {
+    border: #00bcd4 5px solid
+}
+
+#modal1 .input-field{
+    margin-top: 10px!important;
+}

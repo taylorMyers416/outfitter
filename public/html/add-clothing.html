@@ -50,25 +50,19 @@
                 <h3>Add Clothing</h3>
             </div>
             <div class="input-field col s12 m6">
-                <input placeholder = "Clothing Name"id="name" type="text" class="validate">
-                <label for="name">Clothing Name</label>
-            </div>
-
-            <div class="input-field col s12 m6">
-                <select class="icons" id = "clothingType">
+                <select class="icons" id="clothingType">
                     <option value="" disabled selected>Clothing Type</option>
-                    <option value="bag" data-icon="../img/default/bag.png">Bag</option>
                     <option value="bottom" data-icon="../img/default/bottom.png">Bottom</option>
-                    <option value="hat" data-icon="../img/default/hat.png">Hat</option>
                     <option value="jacket" data-icon="../img/default/jacket.png">Jacket</option>
                     <option value="shoes" data-icon="../img/default/shoes.png">Shoes</option>
                     <option value="top" data-icon="../img/default/top.png">Top</option>
+                    <option value="dress" data-icon="../img/default/dress.png">Dress</option>
                 </select>
                 <label>Clothing Type</label>
             </div>
 
             <div class="input-field col s12 m6">
-                <select multiple id = "occasion">
+                <select multiple id="occasion">
                     <option value="" disabled>Dress occasion(optional)</option>
                     <option value="formal">Formal</option>
                     <option value="semi formal">Semi Formal</option>
@@ -81,7 +75,7 @@
             </div>
 
             <div class="input-field col s12 m6">
-                <select multiple id = "colors">
+                <select multiple id="colors">
                     <option value="" disabled>Colors(optional)</option>
                     <option value="red">Red</option>
                     <option value="orange">Orange</option>
@@ -98,7 +92,7 @@
                 <label>Colors</label>
             </div>
 
-            <form action="#" class="col s12">
+            <form action="#" class="col s12 m6">
                 <div class="file-field input-field">
                     <div class="btn cyan">
                         <i id="fileIcon" class="material-icons">cloud_upload</i>
@@ -109,12 +103,13 @@
                     </div>
                 </div>
             </form>
-            <div class = "col s12">
-                    <a id = "addClothingSubmit"  class="waves-effect cyan btn" onClick = "addClothing()" >Submit</a>
+            <div class="col s12">
+                <a id="addClothingSubmit" class="waves-effect cyan btn" onClick="addClothing()">Submit</a>
             </div>
         </div>
     </div>
-    <script src = "../js/add-clothing.js"></script>
+    <script src="js/canvas-to-blob.min.js"></script>
+    <script src="../js/add-clothing.js"></script>
 </body>
 
 </html>
