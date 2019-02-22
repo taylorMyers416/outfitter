@@ -130,6 +130,54 @@ body {
     border: #00bcd4 5px solid
 }
 
-#modal1 .input-field{
-    margin-top: 10px!important;
+#modal1 .input-field {
+    margin-top: 10px !important;
+}
+
+.selectedHolder {
+    display: inline-block;
+    position: relative;
+}
+
+.deselectClothes {
+    border-radius: 100%;
+    font-size: 1.25rem !important;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#selectedMenuToggle {
+    display: none;
+}
+
+main {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+
+    header,
+    main,
+    footer {
+        padding-left: 0;
+    }
+
+    #selectedMenuToggle {
+        display: inline-block;
+    }
+}
+
+#generateCollection {
+    margin: 0;
+}
+
+.generateBtn {
+    margin-top: 15px;
+}
+
+#generateOutfitsImages img {
+    margin: .5px 0px;
+    padding: 0px;
+    border-radius: 5%;
 }

@@ -39,26 +39,15 @@ canvasClothes = {
         dh: 150,
     },
 }
-var imagesToLoad;
-var imagesLoaded = 0;
-var selectInstances;
-var imgArray = [];
-function main() {
-    imagesLoaded += 1;
-    if (imagesLoaded == imagesToLoad) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (var i = 0; i < imgArray.length; i++) {
-            ctx.drawImage(imgArray[i].loaded, imgArray[i].dx, imgArray[i].dy, imgArray[i].dw, imgArray[i].dh)
-        }
-        imagesLoaded = 0
-    }
-}
 
-function loadImage(src) {
+
+function loadImage(imgIndex) {
     var img = new Image();
     img.crossOrigin = "anonymous";
-    img.addEventListener("load", main, false);
-    img.src = src;
+    img.onload = function () {
+        ctx.drawImage(img, imgIndex.dx, imgIndex.dy, imgIndex.dw, imgIndex.dh)
+    }
+    img.src = imgIndex.active.src;
     return img;
 }
 document.addEventListener('DOMContentLoaded', function () {
@@ -115,6 +104,7 @@ var updateCanvasImg = function (arg) {
         canvasClothes.dress.active.classList.remove("activeImg")
         canvasClothes.dress.active = false;
         canvasClothes.dress.loaded = false;
+        ctx.clearRect(140, 0, 100, 200);
     } else if (type === "dress" && canvasClothes.top.active && canvasClothes.bottom.active) {
         canvasClothes.top.active.classList.remove("activeImg")
         canvasClothes.top.active = false;
@@ -122,20 +112,24 @@ var updateCanvasImg = function (arg) {
         canvasClothes.bottom.active.classList.remove("activeImg")
         canvasClothes.bottom.loaded = false;
         canvasClothes.bottom.active = false;
+        ctx.clearRect(140, 0, 100, 200);
     } else if (type === "dress" && canvasClothes.top.active) {
         canvasClothes.top.active.classList.remove("activeImg")
         canvasClothes.top.active = false;
         canvasClothes.top.loaded = false;
+        ctx.clearRect(140, 0, 100, 200);
     } else if (type === "dress" && canvasClothes.bottom.active) {
         canvasClothes.bottom.active.classList.remove("activeImg")
         canvasClothes.bottom.loaded = false;
         canvasClothes.bottom.active = false;
+        ctx.clearRect(140, 0, 100, 200);
     }
 
     if (arg.classList[2]) {
         canvasClothes[type].active = false
         canvasClothes[type].loaded = false
         arg.classList.remove("activeImg")
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         renderCanvas()
 
     } else if (canvasClothes[type].active) {
@@ -155,7 +149,7 @@ var updateCanvasImg = function (arg) {
 }
 
 var renderCanvas = function () {
-    imgArray = []
+    var imgArray = []
     for (var key in canvasClothes) {
         var img = canvasClothes[key];
         if (img.active) {
@@ -165,12 +159,8 @@ var renderCanvas = function () {
     if (imgArray.length == 0) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     } else {
-        imagesToLoad = imgArray.length;
         for (i = 0; i < imgArray.length; i++) {
-            if (!imgArray[i].loaded) {
-                console.log("fired")
-                imgArray[i].loaded = loadImage(imgArray[i].active.src,)
-            }
+            loadImage(imgArray[i])
         }
     }
 }
@@ -179,8 +169,7 @@ var saveOutfit = function () {
     if (canvas.toBlob) {
         canvas.toBlob(
             function (blob) {
-                var formData = new FormData();
-                formData.append('file', blob, uuidv4());
+                blob.name = uuidv4()
                 var data = {
                     type: "outfit",
                     color: selectInstances[2].getSelectedValues(),

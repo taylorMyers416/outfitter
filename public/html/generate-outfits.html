@@ -17,8 +17,34 @@
     <script src="../js/firebase.js"></script>
     <!-- Materialize Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    <style type="text/css">
+        header,
+        main,
+        footer {
+            padding-left: 300px;
+        }
 
+        .sidenav2 {
+            top: 64px !important;
+        }
 
+        @media only screen and (max-width : 992px) {
+
+            header,
+            main,
+            footer {
+                padding-left: 0;
+            }
+
+        }
+
+        @media only screen and (max-width : 600px) {
+
+            .sidenav2 {
+                top: 0px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -27,11 +53,11 @@
             <img class="brand-logo" height="60px" width="auto" src="../img/navLogo.png" />
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons blue-grey-text text-darken-4">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a class = "blue-grey-text text-darken-4" href="/home">Home</a></li>
-                <li><a class = "blue-grey-text text-darken-4" href="/add-clothing">Add Clothing</a></li>
-                <li><a class = "blue-grey-text text-darken-4" href="/view-outfits">View Outfits</a></li>
-                <li><a class = "blue-grey-text text-darken-4" href="/create-outfit">Create Outfit</a></li>
-                <li><a class = "blue-grey-text text-darken-4" href="/generate-outfits">Generate Outfits</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/home">Home</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/add-clothing">Add Clothing</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/view-outfits">View Outfits</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/create-outfit">Create Outfit</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/generate-outfits">Generate Outfits</a></li>
                 <li> <a class="waves-effect blue-grey darken-4 cyan-text btn signout" onclick="signout()">Signout</a></li>
             </ul>
         </div>
@@ -45,11 +71,76 @@
         <li><a href="/generate-outfits">Generate Outfits</a></li>
         <li> <a class="waves-effect cyan black-text btn signout" onclick="signout()">Signout</a></li>
     </ul>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
-        });
+    <ul id="slide-out" class="sidenav sidenav-fixed z-depth-1 sidenav2">
+        <li>
+            <h5 class="center-align">Selected Clothes</h5>
+        </li>
+        <br />
+        <br />
+
+        <li class="selectedHolder">
+            <div class="row align" id="selectedParent">
+                
+            </div>
+        </li>
+    </ul>
+    <main id="generateOutfitMain">
+        <ul class="collapsible z-depth-0">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Filter</div>
+                <div class="white collapsible-body">
+                    <select multiple class="icons" id="clothingType">
+                        <option value="" disabled selected>Clothing Type</option>
+                        <option value="bottom" data-icon="../img/default/bottom.png">Bottom</option>
+                        <option value="jacket" data-icon="../img/default/jacket.png">Jacket</option>
+                        <option value="shoes" data-icon="../img/default/shoes.png">Shoes</option>
+                        <option value="top" data-icon="../img/default/top.png">Top</option>
+                        <option value="dress" data-icon="../img/default/dress.png">Dress</option>
+                    </select>
+                    <label>Clothing Type</label>
+                    <select multiple id="occasion">
+                        <option value="" disabled>Dress occasion</option>
+                        <option value="formal">Formal</option>
+                        <option value="semi formal">Semi Formal</option>
+                        <option value="business casual">Business Casual</option>
+                        <option value="casual">Casual</option>
+                        <option value="beach/outdoor">Beach/Outdoor</option>
+                        <option value="workout">Workout</option>
+                    </select>
+                    <label>Dress Occasion</label>
+
+                    <select multiple id="colors">
+                        <option value="" disabled>Colors</option>
+                        <option value="red">Red</option>
+                        <option value="orange">Orange</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="purple">Purple</option>
+                        <option value="pink">Pink</option>
+                        <option value="brown">Brown</option>
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                        <option value="gray">Gray</option>
+                    </select>
+                    <label>Colors</label>
+                </div>
+            </li>
+        </ul>
+        <ul class="collection" id="generateCollection">
+            <li class="collection-item center-align">
+                <p class="left-align"> Select clothing items. Then we'll generate every combination of outfits.</p>
+                <a class="waves-effect blue-grey darken-4 cyan-text btn center-align generateBtn">Generate</a>
+                <a href="#" data-target="slide-out" id="selectedMenuToggle" class="sidenav-trigger btn cyan generateBtn ">View
+                    Selected</a>
+            </li>
+        </ul>
+        <div id="generateOutfitsImages" class="row">
+
+        </div>
+    </main>
+    <script src="../js/generate-outfits.js">
+
     </script>
 </body>
 
