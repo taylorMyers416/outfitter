@@ -103,7 +103,12 @@ body {
     background-color: #00bcd4;
     /*Custom Color Of Indicator*/
 }
-
+.tabs-fixed-width {
+    max-width: 400px
+}
+.tabs .tab {
+    max-width: 79px;
+}
 #saveBtn {
     position: absolute;
     left: 20px;
@@ -117,7 +122,9 @@ body {
 }
 
 #createOutfitWrapper {
-    height: calc(100vh - 64px);
+    height: calc(100vh - 66px);
+    max-width: 400px;
+    margin: 2px auto 0px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -180,4 +187,12 @@ main {
     margin: .5px 0px;
     padding: 0px;
     border-radius: 5%;
+}
+
+.selectedMain{
+    border: #00bcd4 5px solid
+}
+
+#generatedOutfits {
+    display: none;
 }

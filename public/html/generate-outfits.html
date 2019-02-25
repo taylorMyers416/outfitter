@@ -80,7 +80,7 @@
 
         <li class="selectedHolder">
             <div class="row align" id="selectedParent">
-                
+
             </div>
         </li>
     </ul>
@@ -130,7 +130,7 @@
         <ul class="collection" id="generateCollection">
             <li class="collection-item center-align">
                 <p class="left-align"> Select clothing items. Then we'll generate every combination of outfits.</p>
-                <a class="waves-effect blue-grey darken-4 cyan-text btn center-align generateBtn">Generate</a>
+                <a class="waves-effect blue-grey darken-4 cyan-text btn center-align generateBtn" onclick="generate()">Generate</a>
                 <a href="#" data-target="slide-out" id="selectedMenuToggle" class="sidenav-trigger btn cyan generateBtn ">View
                     Selected</a>
             </li>
@@ -139,6 +139,14 @@
 
         </div>
     </main>
+    <div id="generatedOutfits">
+        <ul class="collection" id="generateCollection">
+            <li class="collection-item center-align">
+                <p class="left-align"> Generated Outfits</p>
+                <a class="waves-effect blue-grey darken-4 cyan-text btn center-align generateBtn" onclick = "location.reload()">Restart</a>
+            </li>
+        </ul>
+    </div>
     <script src="../js/generate-outfits.js">
 
     </script>

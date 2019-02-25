@@ -59,9 +59,11 @@ firebase.auth().onAuthStateChanged(function (user) {
 
     if (user) {
         userid = user;
+        sessionStorage.setItem('user', JSON.stringify(user));
     }
     if (user == undefined) {
         if (window.location.pathname !== "/") {
+            sessionStorage.removeItem('user');
             window.location = "/"
         }
     }
