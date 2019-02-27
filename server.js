@@ -26,14 +26,11 @@ app.use(express.static("public"));
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/html/index.html"));
 });
-app.get("/home", function (req, res) {
-    res.sendFile(path.join(__dirname, "./public/html/home.html"));
+app.get("/closet", function (req, res) {
+    res.sendFile(path.join(__dirname, "./public/html/closet.html"));
 });
 app.get("/add-clothing", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/html/add-clothing.html"));
-});
-app.get("/view-outfits", function (req, res) {
-    res.sendFile(path.join(__dirname, "./public/html/view-outfits.html"));
 });
 app.get("/create-outfit", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/html/create-outfit.html"));

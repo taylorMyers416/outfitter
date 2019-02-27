@@ -106,17 +106,17 @@ body {
 .tabs-fixed-width {
     max-width: 400px
 }
-.tabs .tab {
+.tabs-fixed-width .tab {
     max-width: 79px;
 }
-#saveBtn {
+.saveBtn {
     position: absolute;
     left: 20px;
     z-index: 1;
     bottom: 10px;
 }
 
-#canvasHolder {
+.canvasHolder {
     text-align: center;
     position: relative;
 }
@@ -195,4 +195,32 @@ main {
 
 #generatedOutfits {
     display: none;
+}
+.dynamicFloatingBtn {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+}
+
+#tabUl {
+    overflow-x: hidden;
+}
+
+#tabUl li{
+    width: 50%;
+}
+
+.clothing_itemCloset {
+    width: 125px;
+    height: 125px;
+}
+
+.outfitCloset {
+    width: 240px;
+    height: 200px;
+}
+
+#landing {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("https://www.thespruce.com/thmb/GGJcwDzc-8r-EOP6Blx72YRSxno=/2840x1894/filters:no_upscale()/182187549-56a7042f5f9b58b7d0e60f0d.jpg")center center / cover no-repeat fixed;
+    height: 80vh;
 }

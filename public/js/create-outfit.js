@@ -164,29 +164,3 @@ var renderCanvas = function () {
         }
     }
 }
-
-var saveOutfit = function () {
-    if (canvas.toBlob) {
-        canvas.toBlob(
-            function (blob) {
-                blob.name = uuidv4()
-                var data = {
-                    type: "outfit",
-                    color: selectInstances[2].getSelectedValues(),
-                    occasion: selectInstances[3].getSelectedValues(),
-                }
-                firebasePost("outfit", userid, blob, data);
-            },
-            'image/jpeg'
-        );
-    }
-
-}
-
-function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0,
-            v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}

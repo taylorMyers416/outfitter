@@ -1,8 +1,13 @@
-var jacketArray = []
-var topArray = []
-var bottomArray = []
-var shoesArray = []
-var dressArray = []
+var canvas = [],
+    ctx = [],
+    image = [],
+    jacketArray = [],
+    topArray = [],
+    bottomArray = [],
+    shoesArray = [],
+    dressArray = [],
+    outfitToSave,
+    selectInstances
 
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.sidenav');
@@ -17,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var collapsible = document.querySelectorAll('.collapsible');
     var collapsibleInstances = M.Collapsible.init(collapsible);
     var select = document.querySelectorAll('select');
-    var selectInstances = M.FormSelect.init(select);
+    selectInstances = M.FormSelect.init(select);
+    var modal = document.querySelectorAll('.modal');
+    var modalInstances = M.Modal.init(modal);
+    console.log(selectInstances)
     var userid = JSON.parse(sessionStorage.getItem('user'));
     loadClothes(userid)
 
@@ -91,12 +99,9 @@ var deselect = function (arg, type, indexRef) {
 }
 
 function drawImage(img, ctx, object) {
-
-    return function (){
+    return function () {
         ctx.drawImage(img, object.dx, object.dy, object.dw, object.dh)
     }
-    
-
 }
 
 var generate = function () {
@@ -104,23 +109,72 @@ var generate = function () {
     sideNav.remove()
     var main = document.getElementById("generateOutfitMain")
     main.remove()
-    var parent = document.getElementById("generatedOutfits")
-    parent.style.display = "block"
+    var wrapper = document.getElementById("generatedOutfits")
+    wrapper.style.display = "block"
+    var parent = document.getElementById("outfitWrapper")
+    jacketArray = jacketArray.filter(function (val) {
+        return val
+    });
+    bottomArray = bottomArray.filter(function (val) {
+        return val
+    });
+    topArray = topArray.filter(function (val) {
+        return val
+    });
+    shoesArray = shoesArray.filter(function (val) {
+        return val
+    });
+    dressArray = dressArray.filter(function (val) {
+        return val
+    });
     var noDressNoJacket = cartesian(topArray, bottomArray, shoesArray); // top bottom shoe
     var noDressJacket = cartesian(topArray, bottomArray, shoesArray, jacketArray) // jacket top bottom shoe
     var dressNoJacket = cartesian(dressArray, shoesArray) // dress shoes 
     var dressJacket = cartesian(dressArray, shoesArray, jacketArray) // jacket dress shoes
     var outfits = noDressNoJacket.concat(noDressJacket, dressNoJacket, dressJacket)
-    var canvas = [],
-        ctx = [],
-        image = []
-    for (var i = 0; i < outfits.length; i++) {
 
+    for (var i = 0; i < outfits.length; i++) {
+        var divCol = document.createElement("div");
+        divCol.classList.add("white", "canvasHolder", "col", "s12", "m6", "l4", "xl3", "center-align")
+        divCol.style.margin = "10px 0px"
+        var div = document.createElement("div")
+        div.style.maxWidth = "260px"
+        div.style.display = "inline-block";
+        div.style.border = "#ddd solid 1px"
         canvas[i] = document.createElement("canvas")
         canvas[i].width = "240"
         canvas[i].height = "200"
-        parent.appendChild(canvas[i])
+        var a = document.createElement("a")
+        a.classList.add("waves-effect", "cyan", "btn-floating", "dynamicFloatingBtn", "modal-trigger")
+        a.onclick = (function () {
+            var currentI = i;
+            return function () {
+                activeOutfit(canvas[currentI]);
+            }
+        })();
+
+        a.href = "#modal1"
+        var icon = document.createElement("i")
+        icon.classList.add("material-icons")
+        icon.innerHTML = "save"
+        a.appendChild(icon)
+        div.appendChild(a)
+        div.appendChild(canvas[i])
+        divCol.appendChild(div)
+        parent.appendChild(divCol)
         image[i] = []
+        ctx[i] = canvas[i].getContext("2d");
+        var imgData = ctx[i].getImageData(0, 0, 240, 200);
+        var data = imgData.data;
+        for (var k = 0; k < data.length; k += 4) {
+            if (data[k + 3] < 255) {
+                data[k] = 255 - data[k];
+                data[k + 1] = 255 - data[k + 1];
+                data[k + 2] = 255 - data[k + 2];
+                data[k + 3] = 255 - data[k + 3];
+            }
+        }
+        ctx[i].putImageData(imgData,0,0);
         for (var j = 0; j < outfits[i].length; j++) {
             var img = outfits[i][j]
             if (img.type === "jacket") {
@@ -151,12 +205,17 @@ var generate = function () {
             }
             image[i][j] = new Image()
             image[i][j].crossOrigin = "anonymous";
-            ctx[i] = canvas[i].getContext("2d");
+
             ctx[i].translate(0.5, 0.5)
+            // change non-opaque pixels to white
+
             image[i][j].onload = drawImage(image[i][j], ctx[i], img)
             image[i][j].src = img.src;
         }
     }
+}
+var activeOutfit = function (arg) {
+    outfitToSave = arg
 }
 
 function cartesian() {

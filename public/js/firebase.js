@@ -17,6 +17,48 @@ const settings = {
 };
 firestore.settings(settings);
 
+var saveOutfit = function (canvas, color, occasion) {
+    console.log("fired")
+
+    function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0,
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+    if (canvas.toBlob) {
+        canvas.toBlob(
+            function (blob) {
+                blob.name = uuidv4()
+                var data = {
+                    type: "outfit",
+                    color: color,
+                    occasion: occasion
+                }
+                firebasePost("outfit", userid, blob, data);
+            },
+            'image/jpeg'
+        );
+    }
+}
+var firebaseDelete = function (table, item,cb) {
+    // Create a reference to the file to delete
+    var storageRef = firebase.storage().ref(item.data().img_ref);
+    // Delete the file
+    storageRef.delete().then(function () {
+        console.log(item.id)
+        db.collection(`${table}`).doc(item.id).delete().then(function () {
+            console.log("Document successfully deleted!");
+            cb
+        }).catch(function (error) {
+            console.error("Error removing document: ", error);
+        });
+    }).catch(function (error) {
+       console.log(error)
+    });
+    
+}
 var firebasePost = function (table, userid, file, data) {
     var storageRef = firebase.storage().ref(`/${userid.uid}/${table}/${file.name}`);
     var uploadTask = storageRef.put(file);
@@ -45,6 +87,7 @@ var firebasePost = function (table, userid, file, data) {
                     occassion: data.occasion,
                     color: data.color,
                     img_url: downloadURL,
+                    img_ref: `/${userid.uid}/${table}/${file.name}`
                 })
                 .then(function () {
                     console.log("Document successfully written!");
@@ -75,7 +118,7 @@ var login = function () {
         var token = result.credential.accessToken;
         // The signed-in userid info.
         userid = result.user;
-        window.location = "/home";
+        window.location = "/add-clothing";
     }).catch(function (error) {
         // Handle Errors here.
         if (error.code === 'auth/account-exists-with-different-credential') {

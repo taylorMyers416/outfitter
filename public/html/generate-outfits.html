@@ -53,9 +53,8 @@
             <img class="brand-logo" height="60px" width="auto" src="../img/navLogo.png" />
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons blue-grey-text text-darken-4">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a class="blue-grey-text text-darken-4" href="/home">Home</a></li>
                 <li><a class="blue-grey-text text-darken-4" href="/add-clothing">Add Clothing</a></li>
-                <li><a class="blue-grey-text text-darken-4" href="/view-outfits">View Outfits</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/closet">Closet</a></li>
                 <li><a class="blue-grey-text text-darken-4" href="/create-outfit">Create Outfit</a></li>
                 <li><a class="blue-grey-text text-darken-4" href="/generate-outfits">Generate Outfits</a></li>
                 <li> <a class="waves-effect blue-grey darken-4 cyan-text btn signout" onclick="signout()">Signout</a></li>
@@ -64,9 +63,8 @@
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="/home">Home</a></li>
         <li><a href="/add-clothing">Add Clothing</a></li>
-        <li><a href="/view-outfits">View Outfits</a></li>
+        <li><a href="/closet">Closet</a></li>
         <li><a href="/create-outfit">Create Outfit</a></li>
         <li><a href="/generate-outfits">Generate Outfits</a></li>
         <li> <a class="waves-effect cyan black-text btn signout" onclick="signout()">Signout</a></li>
@@ -143,9 +141,52 @@
         <ul class="collection" id="generateCollection">
             <li class="collection-item center-align">
                 <p class="left-align"> Generated Outfits</p>
-                <a class="waves-effect blue-grey darken-4 cyan-text btn center-align generateBtn" onclick = "location.reload()">Restart</a>
+                <a class="waves-effect blue-grey darken-4 cyan-text btn center-align generateBtn" onclick="location.reload()">Restart</a>
             </li>
         </ul>
+        <div id="outfitWrapper" class="row center-align">
+
+        </div>
+    </div>
+    <div id="modal1" class="modal">
+        <div class="modal-content ">
+            <h4>Save Outfit</h4>
+            <div class="input-field col s12">
+                <select multiple id="colorsModal">
+                    <option value="" disabled>Outfit Colors(optional)</option>
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="purple">Purple</option>
+                    <option value="pink">Pink</option>
+                    <option value="brown">Brown</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="gray">Gray</option>
+                </select>
+                <label>Outfit Colors</label>
+            </div>
+
+            <div class="input-field col s12">
+                <select multiple id="occasionModal">
+                    <option value="" disabled>Outfit Occasion(optional)</option>
+                    <option value="formal">Formal</option>
+                    <option value="semi formal">Semi Formal</option>
+                    <option value="business casual">Business Casual</option>
+                    <option value="casual">Casual</option>
+                    <option value="beach/outdoor">Beach/Outdoor</option>
+                    <option value="workout">Workout</option>
+                </select>
+                <label>Outfit Occasion</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect blue-grey btn"><i class="material-icons ">close</i>Cancel</a>
+            <a href="#!" class="modal-close waves-effect cyan btn" onclick="saveOutfit(outfitToSave,selectInstances[3].getSelectedValues(),selectInstances[4].getSelectedValues())"><i
+                    class="material-icons">save</i>Save</a>
+        </div>
     </div>
     <script src="../js/generate-outfits.js">
 
