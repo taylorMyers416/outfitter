@@ -118,7 +118,7 @@ var login = function () {
         var token = result.credential.accessToken;
         // The signed-in userid info.
         userid = result.user;
-        window.location = "/outfitter/add-clothing";
+        window.location.href = "./public/html/add-clothing.html";
     }).catch(function (error) {
         // Handle Errors here.
         if (error.code === 'auth/account-exists-with-different-credential') {
