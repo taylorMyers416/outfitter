@@ -105,9 +105,9 @@ firebase.auth().onAuthStateChanged(function (user) {
         sessionStorage.setItem('user', JSON.stringify(user));
     }
     if (user == undefined) {
-        if (window.location.pathname !== "/") {
+        if (window.location.pathname !== "/outfitter/") {
             sessionStorage.removeItem('user');
-            window.location = "/"
+            window.location = "/outfitter/"
         }
     }
 });
@@ -118,7 +118,7 @@ var login = function () {
         var token = result.credential.accessToken;
         // The signed-in userid info.
         userid = result.user;
-        window.location = "/add-clothing";
+        window.location = "/outfitter/add-clothing";
     }).catch(function (error) {
         // Handle Errors here.
         if (error.code === 'auth/account-exists-with-different-credential') {
@@ -183,7 +183,7 @@ var login = function () {
 var signout = function () {
     firebase.auth().signOut().then(function () {
         userid = undefined;
-        window.location = "/";
+        window.location = "/outfitter/";
     }, function (error) {
         console.error('Sign Out Error', error);
     });
