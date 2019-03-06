@@ -186,7 +186,6 @@ var demo = function (){
     var auth = firebase.auth()
     auth.signInWithEmailAndPassword(email, pass)
         .then(function (result) {
-            var token = result.credential.accessToken;
             userid = result.user;
             window.location.href = "./public/html/add-clothing.html";
         })
