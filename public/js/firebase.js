@@ -4,7 +4,7 @@ var config = {
     databaseURL: "https://outfitter-c1ea7.firebaseio.com",
     projectId: "outfitter-c1ea7",
     storageBucket: "outfitter-c1ea7.appspot.com",
-    messagingSenderId: "634298127988"
+        messagingSenderId: "634298127988"
 };
 firebase.initializeApp(config);
 var db = firebase.firestore()
