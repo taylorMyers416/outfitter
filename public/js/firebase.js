@@ -180,6 +180,19 @@ var login = function () {
     })
 };
 
+var demo = function (){
+    var email = "gokartdemo@gmail.com"
+    var pass = "gokart"
+    var auth = firebase.auth()
+    auth.signInWithEmailAndPassword(email, pass)
+        .then(function (result) {
+            var token = result.credential.accessToken;
+            userid = result.user;
+            window.location.href = "./public/html/add-clothing.html";
+        })
+        .catch(function (err) {console.log(err)});
+}
+
 var signout = function () {
     firebase.auth().signOut().then(function () {
         userid = undefined;
@@ -188,5 +201,3 @@ var signout = function () {
         console.error('Sign Out Error', error);
     });
 }
-
-console.log(window.location)
