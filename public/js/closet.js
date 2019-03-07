@@ -21,10 +21,11 @@ var loadCloset = function (table, userid) {
         .get()
         .then(function (querySnapshot) {
             var parent;
-            querySnapshot.forEach(function (doc) {
+            querySnapshot.forEach(function (doc,i) {
                 var parent = document.getElementById(table)
                 var col = document.createElement("div")
-                col.id = doc.data().id
+                console.log(doc)
+                col.id = i
                 col.style.margin = "10px 0px"
                 var div = document.createElement("div");
                 div.style.border = "#ddd solid 1px"
@@ -40,9 +41,9 @@ var loadCloset = function (table, userid) {
                 img.classList.add("white", "mainImg", `${table}Closet`);
                 img.src = doc.data().img_url;
                 var a = document.createElement("a")
-                a.classList.add("waves-effect", "red", "btn-floating", "modal-trigger", "dynamicFloatingBtn", "modal-trigger")
+                a.classList.add("waves-effect", "red", "btn-floating", "modal-trigger", "dynamicFloatingBtn")
                 a.onclick = function () {
-                    updateDoc(doc,table)
+                    updateDoc(i,table)
                 }
                 a.href = "#modal1"
                 var icon = document.createElement("i")
@@ -65,6 +66,6 @@ var updateDoc = function (arg1, arg2) {
 }
 
 var removeElement = function (arg1){
-    var el = document.getElementById(arg1.data().id);
+    var el = document.getElementById(arg1);
     el.remove();
 }

@@ -1,7 +1,17 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 ctx.translate(0.5, 0.5)
-
+var imgData = ctx.getImageData(0, 0, 240, 200);
+var data = imgData.data;
+for (var k = 0; k < data.length; k += 4) {
+    if (data[k + 3] < 255) {
+        data[k] = 255 - data[k];
+        data[k + 1] = 255 - data[k + 1];
+        data[k + 2] = 255 - data[k + 2];
+        data[k + 3] = 255 - data[k + 3];
+    }
+}
+ctx.putImageData(imgData, 0, 0);
 canvasClothes = {
     jacket: {
         active: false,
