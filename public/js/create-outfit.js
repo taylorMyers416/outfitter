@@ -82,8 +82,8 @@ var getClothingItems = function (userid, type) {
                 var img = document.createElement("img");
                 img.classList.add("white");
                 img.classList.add(`${type}`)
-                img.style.width = "100%";
-                img.style.height = "auto";
+                img.style.width = "75px";
+                img.style.height = "75px";
                 img.src = doc.data().img_url;
                 img.onclick = function () {
                     updateCanvasImg(this)

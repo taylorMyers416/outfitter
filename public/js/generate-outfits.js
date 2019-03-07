@@ -66,6 +66,8 @@ var select = function (arg, type) {
     div.id = `side-${type}-${indexRef}`;
     var img = new Image();
     img.src = arg.src
+    img.style.width = "75px";
+    img.style.height = "75px";
     var icon = document.createElement("i")
     icon.classList.add("material-icons", "red", "small", "white-text", "deselectClothes")
     icon.innerHTML = "close"
