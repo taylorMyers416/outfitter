@@ -1,6 +1,5 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-ctx.translate(0.5, 0.5)
 var imgData = ctx.getImageData(0, 0, 240, 200);
 var data = imgData.data;
 for (var k = 0; k < data.length; k += 4) {
@@ -87,11 +86,9 @@ var getClothingItems = function (userid, type) {
             var parent = document.getElementById(`${type}Div`)
             querySnapshot.forEach(function (doc) {
                 var div = document.createElement("div");
-                div.classList.add("col");
-                div.classList.add("s3");
+                div.classList.add("col","s3");
                 var img = document.createElement("img");
-                img.classList.add("white");
-                img.classList.add(`${type}`)
+                img.classList.add("white",`${type}`,"pointer");
                 img.style.width = "75px";
                 img.style.height = "75px";
                 img.src = doc.data().img_url;

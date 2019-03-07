@@ -29,6 +29,7 @@ var loadCloset = function (table, userid) {
                 col.style.margin = "10px 0px"
                 var div = document.createElement("div");
                 div.style.border = "#ddd solid 1px"
+                div.classList.add("outfitCenter")
                 if (table === "outfit") {
                     col.classList.add("canvasHolder", "col", "s12", "m6", "l4", "xl3")
                     div.style.maxWidth = "260px"

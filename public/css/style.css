@@ -3,6 +3,10 @@ body {
     height: 100vh;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .material-icons {
     vertical-align: middle;
 }
@@ -21,6 +25,7 @@ body {
     display: block;
     margin: 30px auto;
 }
+
 /* label color */
 .input-field label {
     color: #000 !important;
@@ -109,12 +114,15 @@ body {
     background-color: #00bcd4;
     /*Custom Color Of Indicator*/
 }
+
 .tabs-fixed-width {
     max-width: 400px
 }
+
 .tabs-fixed-width .tab {
     max-width: 79px;
 }
+
 .saveBtn {
     position: absolute;
     left: 20px;
@@ -195,13 +203,14 @@ main {
     border-radius: 5%;
 }
 
-.selectedMain{
+.selectedMain {
     border: #00bcd4 5px solid
 }
 
 #generatedOutfits {
     display: none;
 }
+
 .dynamicFloatingBtn {
     position: absolute;
     z-index: 1;
@@ -212,7 +221,7 @@ main {
     overflow-x: hidden;
 }
 
-#tabUl li{
+#tabUl li {
     width: 50%;
 }
 
@@ -227,6 +236,12 @@ main {
 }
 
 #landing {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("https://www.thespruce.com/thmb/GGJcwDzc-8r-EOP6Blx72YRSxno=/2840x1894/filters:no_upscale()/182187549-56a7042f5f9b58b7d0e60f0d.jpg")center center / cover no-repeat fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.thespruce.com/thmb/GGJcwDzc-8r-EOP6Blx72YRSxno=/2840x1894/filters:no_upscale()/182187549-56a7042f5f9b58b7d0e60f0d.jpg")center center / cover no-repeat fixed;
     height: 80vh;
+}
+
+@media only screen and (max-width : 600px) {
+    .outfitCenter {
+        margin: 10px auto;
+    }
 }

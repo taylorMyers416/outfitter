@@ -40,7 +40,7 @@ var loadClothes = function (userid) {
                 var div = document.createElement("div");
                 div.classList.add("col", "s3", "m2")
                 var img = document.createElement("img");
-                img.classList.add("white", "mainImg");
+                img.classList.add("white", "mainImg","pointer");
                 img.style.width = "75px";
                 img.style.height = "75px";
                 img.src = doc.data().img_url;
@@ -69,7 +69,7 @@ var select = function (arg, type) {
     img.style.width = "75px";
     img.style.height = "75px";
     var icon = document.createElement("i")
-    icon.classList.add("material-icons", "red", "small", "white-text", "deselectClothes")
+    icon.classList.add("material-icons", "red", "small", "white-text", "deselectClothes","pointer")
     icon.innerHTML = "close"
     icon.onclick = function () {
         deselect(arg, type, indexRef)
