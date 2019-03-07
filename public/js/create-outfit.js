@@ -1,16 +1,6 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-var imgData = ctx.getImageData(0, 0, 240, 200);
-var data = imgData.data;
-for (var k = 0; k < data.length; k += 4) {
-    if (data[k + 3] < 255) {
-        data[k] = 255 - data[k];
-        data[k + 1] = 255 - data[k + 1];
-        data[k + 2] = 255 - data[k + 2];
-        data[k + 3] = 255 - data[k + 3];
-    }
-}
-ctx.putImageData(imgData, 0, 0);
+
 canvasClothes = {
     jacket: {
         active: false,
@@ -49,7 +39,6 @@ canvasClothes = {
     },
 }
 
-
 function loadImage(imgIndex) {
     var img = new Image();
     img.crossOrigin = "anonymous";
@@ -86,9 +75,9 @@ var getClothingItems = function (userid, type) {
             var parent = document.getElementById(`${type}Div`)
             querySnapshot.forEach(function (doc) {
                 var div = document.createElement("div");
-                div.classList.add("col","s3");
+                div.classList.add("col", "s3");
                 var img = document.createElement("img");
-                img.classList.add("white",`${type}`,"pointer");
+                img.classList.add("white", `${type}`, "pointer");
                 img.style.width = "75px";
                 img.style.height = "75px";
                 img.src = doc.data().img_url;
@@ -170,4 +159,19 @@ var renderCanvas = function () {
             loadImage(imgArray[i])
         }
     }
+}
+
+var transparent = function () {
+    var imgData = ctx.getImageData(0, 0, 240, 200);
+    var data = imgData.data;
+    for (var k = 0; k < data.length; k += 4) {
+        if (data[k + 3] < 255) {
+            data[k] = 255 - data[k];
+            data[k + 1] = 255 - data[k + 1];
+            data[k + 2] = 255 - data[k + 2];
+            data[k + 3] = 255 - data[k + 3];
+        }
+    }
+    ctx.putImageData(imgData, 0, 0);
+    saveOutfit(canvas)
 }
