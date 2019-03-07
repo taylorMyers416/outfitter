@@ -13,38 +13,11 @@
     <!-- Materialize Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/generate-outfit.css">
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="../js/firebase.js"></script>
     <!-- Materialize Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
-    <style type="text/css">
-        header,
-        main,
-        footer {
-            padding-left: 300px;
-        }
-
-        .sidenav2 {
-            top: 64px !important;
-        }
-
-        @media only screen and (max-width : 992px) {
-
-            header,
-            main,
-            footer {
-                padding-left: 0;
-            }
-
-        }
-
-        @media only screen and (max-width : 600px) {
-
-            .sidenav2 {
-                top: 0px !important;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -53,20 +26,20 @@
             <img class="brand-logo" height="60px" width="auto" src="../img/navLogo.png" />
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons blue-grey-text text-darken-4">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a class="blue-grey-text text-darken-4" href="./add-clothing.html">Add Clothing</a></li>
-                <li><a class="blue-grey-text text-darken-4" href="./closet.html">Closet</a></li>
-                <li><a class="blue-grey-text text-darken-4" href="./create-outfit.html">Create Outfit</a></li>
-                <li><a class="blue-grey-text text-darken-4" href="./generate-outfits.html">Generate Outfits</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/add-clothing">Add Clothing</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/closet">Closet</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/create-outfit">Create Outfit</a></li>
+                <li><a class="blue-grey-text text-darken-4" href="/generate-outfits">Generate Outfits</a></li>
                 <li> <a class="waves-effect blue-grey darken-4 cyan-text btn signout" onclick="signout()">Signout</a></li>
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="./add-clothing.html">Add Clothing</a></li>
-        <li><a href="./closet.html">Closet</a></li>
-        <li><a href="./create-outfit.html">Create Outfit</a></li>
-        <li><a href="./generate-outfits.html">Generate Outfits</a></li>
+        <li><a href="/add-clothing">Add Clothing</a></li>
+        <li><a href="/closet">Closet</a></li>
+        <li><a href="/create-outfit">Create Outfit</a></li>
+        <li><a href="/generate-outfits">Generate Outfits</a></li>
         <li> <a class="waves-effect cyan black-text btn signout" onclick="signout()">Signout</a></li>
     </ul>
     <ul id="slide-out" class="sidenav sidenav-fixed z-depth-1 sidenav2">

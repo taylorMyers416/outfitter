@@ -1,4 +1,5 @@
 var docToDelete;
+var storageToDelete;
 var table;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -24,8 +25,7 @@ var loadCloset = function (table, userid) {
             querySnapshot.forEach(function (doc,i) {
                 var parent = document.getElementById(table)
                 var col = document.createElement("div")
-                console.log(doc)
-                col.id = i
+                col.id = doc.id
                 col.style.margin = "10px 0px"
                 var div = document.createElement("div");
                 div.style.border = "#ddd solid 1px"
@@ -44,7 +44,7 @@ var loadCloset = function (table, userid) {
                 var a = document.createElement("a")
                 a.classList.add("waves-effect", "red", "btn-floating", "modal-trigger", "dynamicFloatingBtn")
                 a.onclick = function () {
-                    updateDoc(i,table)
+                    updateDoc(doc.id,doc.data().img_ref,table)
                 }
                 a.href = "#modal1"
                 var icon = document.createElement("i")
@@ -61,12 +61,13 @@ var loadCloset = function (table, userid) {
             console.log("Error getting documents: ", error);
         });
 }
-var updateDoc = function (arg1, arg2) {
-    docToDelete = arg1;
-    table = arg2;   
+var updateDoc = function (docId,storageRef, tableName) {
+    docToDelete = docId;
+    storageToDelete = storageRef
+    table = tableName;   
 }
 
-var removeElement = function (arg1){
-    var el = document.getElementById(arg1);
+var removeElement = function (docId){
+    var el = document.getElementById(docId);
     el.remove();
 }

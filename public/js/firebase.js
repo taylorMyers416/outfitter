@@ -40,13 +40,12 @@ var saveOutfit = function (canvas, color, occasion) {
         );
     }
 }
-var firebaseDelete = function (table, item,cb) {
+var firebaseDelete = function (table, docId,storage,cb) {
     // Create a reference to the file to delete
-    var storageRef = firebase.storage().ref(item.data().img_ref);
+    var storageRef = firebase.storage().ref(storage);
     // Delete the file
     storageRef.delete().then(function () {
-        console.log(item.id)
-        db.collection(`${table}`).doc(item.id).delete().then(function () {
+        db.collection(`${table}`).doc(docId).delete().then(function () {
             console.log("Document successfully deleted!");
             cb
         }).catch(function (error) {
@@ -103,9 +102,9 @@ firebase.auth().onAuthStateChanged(function (user) {
         sessionStorage.setItem('user', JSON.stringify(user));
     }
     if (user == undefined) {
-        if (window.location.pathname !== "/outfitter/") {
+        if (window.location.pathname !== "/") {
             sessionStorage.removeItem('user');
-            window.location = "/outfitter/"
+            window.location = "/"
         }
     }
 });
@@ -116,7 +115,7 @@ var login = function () {
         var token = result.credential.accessToken;
         // The signed-in userid info.
         userid = result.user;
-        window.location.href = "./public/html/add-clothing.html";
+        window.location = "/add-clothing";
     }).catch(function (error) {
         // Handle Errors here.
         if (error.code === 'auth/account-exists-with-different-credential') {
@@ -185,7 +184,7 @@ var demo = function (){
     auth.signInWithEmailAndPassword(email, pass)
         .then(function (result) {
             userid = result.user;
-            window.location.href = "./public/html/add-clothing.html";
+            window.location = "/add-clothing";
         })
         .catch(function (err) {console.log(err)});
 }
@@ -193,7 +192,7 @@ var demo = function (){
 var signout = function () {
     firebase.auth().signOut().then(function () {
         userid = undefined;
-        window.location = "/outfitter/";
+        window.location = "/";
     }, function (error) {
         console.error('Sign Out Error', error);
     });

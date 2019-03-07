@@ -94,6 +94,7 @@ var getClothingItems = function (userid, type) {
 }
 
 var updateCanvasImg = function (arg) {
+
     var type = arg.classList[1]
 
     if (type === "bottom" && canvasClothes.dress.active || type === "top" && canvasClothes.dress.active) {
@@ -121,7 +122,7 @@ var updateCanvasImg = function (arg) {
         ctx.clearRect(140, 0, 100, 200);
     }
 
-    if (arg.classList[2]) {
+    if (arg.classList[3]) {
         canvasClothes[type].active = false
         canvasClothes[type].loaded = false
         arg.classList.remove("activeImg")
