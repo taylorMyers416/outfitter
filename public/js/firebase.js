@@ -18,8 +18,6 @@ const settings = {
 firestore.settings(settings);
 
 var saveOutfit = function (canvas, color, occasion) {
-    console.log("fired")
-
     function uuidv4() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0,
@@ -33,8 +31,8 @@ var saveOutfit = function (canvas, color, occasion) {
                 blob.name = uuidv4()
                 var data = {
                     type: "outfit",
-                    color: color,
-                    occasion: occasion
+                    // color: color,
+                    // occasion: occasion
                 }
                 firebasePost("outfit", userid, blob, data);
             },
@@ -84,13 +82,13 @@ var firebasePost = function (table, userid, file, data) {
             db.collection(`${table}`).add({
                     user: userid.uid,
                     type: data.type,
-                    occassion: data.occasion,
-                    color: data.color,
+                    // occassion: data.occasion,
+                    // color: data.color,
                     img_url: downloadURL,
                     img_ref: `/${userid.uid}/${table}/${file.name}`
                 })
                 .then(function () {
-                    console.log("Document successfully written!");
+                    M.toast({html: 'Saved!'})
                 })
                 .catch(function (error) {
                     console.error("Error writing document: ", error);

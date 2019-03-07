@@ -145,11 +145,11 @@ var generate = function () {
         canvas[i].width = "240"
         canvas[i].height = "200"
         var a = document.createElement("a")
-        a.classList.add("waves-effect", "cyan", "btn-floating", "dynamicFloatingBtn", "modal-trigger")
+        a.classList.add("waves-effect", "cyan", "btn-floating", "dynamicFloatingBtn",) //modal-triger
         a.onclick = (function () {
             var currentI = i;
             return function () {
-                activeOutfit(canvas[currentI]);
+                saveOutfit(canvas[currentI]);
             }
         })();
 
@@ -214,9 +214,9 @@ var generate = function () {
         }
     }
 }
-var activeOutfit = function (arg) {
-    outfitToSave = arg
-}
+// var activeOutfit = function (arg) {
+//     outfitToSave = arg
+// }
 
 function cartesian() {
     var r = [],

@@ -12,15 +12,16 @@ var addClothing = function () {
    
     var data = {
         type: document.getElementById("clothingType").value,
-        color: selectInstances[2].getSelectedValues(),
-        occasion: selectInstances[1].getSelectedValues(),
+        // color: selectInstances[2].getSelectedValues(),
+        // occasion: selectInstances[1].getSelectedValues(),
     }
     firebasePost("clothing_item", userid, selectedFile, data);
 }
 var onFileSelection = function (event) {
     if (event.target.files && event.target.files[0]) {
-        // var img = document.querySelector('#image');
+        var img = document.querySelector('#preview');
         selectedFile = event.target.files[0]
-        // img.src = URL.createObjectURL(this.files[0]);
+        console.log(selectedFile)
+        img.src = URL.createObjectURL(event.target.files[0]);
     }
 }

@@ -46,12 +46,13 @@
     </ul>
     <div id="createOutfitWrapper" class="blue-grey z-depth-2">
         <div class="white canvasHolder">
-            <a id="saveBtn" class="waves-effect cyan btn-floating modal-trigger saveBtn" href="#modal1"><i class="material-icons">save</i></a>
+            <a id="saveBtn" class="waves-effect cyan btn-floating modal-trigger saveBtn" onclick = "saveOutfit(canvas)">
+                <i class="material-icons">save</i></a>
             <canvas id="canvas" width=240 height=200 style='width:240px;height:200px;margin-top:10px;'></canvas>
 
         </div>
         <div class="row">
-            <ul class="collapsible z-depth-0">
+            <!-- <ul class="collapsible z-depth-0">
                 <li>
                     <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Filter</div>
                     <div class="white collapsible-body">
@@ -84,7 +85,7 @@
                         <label>Colors</label>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
             <ul class="tabs tabs-fixed-width tab-demo z-depth-0">
                 <li class="tab"><a href="#test1" class="active"><img src="../img/default/jacket.png" height="40px"
                             width="40px"></a></li>
@@ -110,7 +111,7 @@
             </div>
         </div>
         <!-- Save Modal Structure -->
-        <div id="modal1" class="modal">
+        <!-- <div id="modal1" class="modal">
             <div class="modal-content ">
                 <h4>Save Outfit</h4>
                 <div class="input-field col s12">
@@ -149,7 +150,7 @@
                 <a href="#!" class="modal-close waves-effect cyan btn" onclick="saveOutfit(canvas,selectInstances[2].getSelectedValues(),selectInstances[3].getSelectedValues())"><i
                         class="material-icons">save</i>Save</a>
             </div>
-        </div>
+        </div> -->
 
     </div>
     <script src="../js/create-outfit.js"></script>
